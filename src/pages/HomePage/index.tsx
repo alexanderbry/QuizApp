@@ -1,32 +1,42 @@
-import React, { useState } from 'react';
-import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
+import React, { useState } from "react";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { useNavigate } from "react-router";
 
 export const HomePage: React.FC = () => {
   const [selectedQuiz, setSelectedQuiz] = useState<string | null>(null);
 
   const quizzes = [
-    { id: 'math', label: 'Mathematics Quiz' },
-    { id: 'science', label: 'Science Quiz' },
-    { id: 'history', label: 'History Quiz' },
-    { id: 'literature', label: 'Literature Quiz' }
+    { id: "math", label: "Mathematics Quiz" },
+    { id: "science", label: "Science Quiz" },
+    { id: "history", label: "History Quiz" },
+    { id: "literature", label: "Literature Quiz" },
   ];
 
   const handleQuizSelection = (quizId: string) => {
     setSelectedQuiz(quizId);
   };
 
-  const handleStartQuiz = () => {
+const navigate = useNavigate();
+
+const handleStartQuiz = () => {
     if (selectedQuiz) {
-      // Here you would typically navigate to the quiz or start the selected quiz
-      console.log('Selected Quiz:', selectedQuiz);
-      alert(`Starting quiz: ${selectedQuiz}`);
+        // Navigate to the quiz page
+        navigate("/quiz");
+        console.log("Selected Quiz:", selectedQuiz);
+        alert(`Starting quiz: ${selectedQuiz}`);
     } else {
-      alert('Please select a quiz');
+        alert("Please select a quiz");
     }
-  };
+};
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
@@ -37,21 +47,15 @@ export const HomePage: React.FC = () => {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <RadioGroup 
-            onValueChange={handleQuizSelection} 
-            value={selectedQuiz || ''}
+          <RadioGroup
+            onValueChange={handleQuizSelection}
+            value={selectedQuiz || ""}
             className="space-y-3"
           >
             {quizzes.map((quiz) => (
               <div key={quiz.id} className="flex items-center space-x-3">
-                <RadioGroupItem 
-                  value={quiz.id} 
-                  id={quiz.id} 
-                />
-                <Label 
-                  htmlFor={quiz.id} 
-                  className="text-base"
-                >
+                <RadioGroupItem value={quiz.id} id={quiz.id} />
+                <Label htmlFor={quiz.id} className="text-base">
                   {quiz.label}
                 </Label>
               </div>
@@ -59,8 +63,8 @@ export const HomePage: React.FC = () => {
           </RadioGroup>
         </CardContent>
         <CardFooter>
-          <Button 
-            onClick={handleStartQuiz} 
+          <Button
+            onClick={handleStartQuiz}
             className="w-full"
             disabled={!selectedQuiz}
           >
