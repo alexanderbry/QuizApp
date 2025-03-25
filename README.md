@@ -1,6 +1,3 @@
-Here's the `README.md` file for your quiz app:
-
-```markdown
 # Quiz App
 
 A simple and interactive quiz app built with [React/Node.js/your tech stack]. This app allows users to take quizzes, view results, and test their knowledge on various topics.
