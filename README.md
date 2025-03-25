@@ -1,6 +1,6 @@
 # Quiz App
 
-A simple and interactive quiz app built with [React/Node.js/your tech stack]. This app allows users to take quizzes, view results, and test their knowledge on various topics.
+A simple and interactive quiz app built with React. This app allows users to take quizzes, view results, and test their knowledge on various topics.
 
 ## Features
 - User-friendly interface for taking quizzes.
@@ -8,9 +8,9 @@ A simple and interactive quiz app built with [React/Node.js/your tech stack]. Th
 - Responsive design for mobile and desktop devices.
 
 ## Technologies Used
-- Frontend: [React.js]
-- CSS Framework: [TailwindCSS / ShadCN]
-- Additional Libraries: [React Router, etc.]
+- Frontend: React.js
+- CSS Framework: TailwindCSS & ShadCN
+- Additional Libraries: React Router, etc.
 
 ## Setup Instructions
 
