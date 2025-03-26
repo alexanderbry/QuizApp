@@ -29,7 +29,6 @@ const navigate = useNavigate();
 
 const handleStartQuiz = () => {
     if (selectedQuiz) {
-        // Navigate to the quiz page
         navigate("/quiz");
         console.log("Selected Quiz:", selectedQuiz);
         alert(`Starting quiz: ${selectedQuiz}`);

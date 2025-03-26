@@ -9,36 +9,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
-
-// Define the structure of a quiz question
-interface QuizQuestion {
-  id: number;
-  question: string;
-  options: string[];
-  correctAnswer: string;
-}
-
-// Sample quiz questions
-const QUIZ_QUESTIONS: QuizQuestion[] = [
-  {
-    id: 1,
-    question: "What is the capital of France?",
-    options: ["London", "Berlin", "Paris", "Rome"],
-    correctAnswer: "Paris",
-  },
-  {
-    id: 2,
-    question: "Which planet is known as the Red Planet?",
-    options: ["Venus", "Mars", "Jupiter", "Saturn"],
-    correctAnswer: "Mars",
-  },
-  {
-    id: 3,
-    question: "What is 2 + 2?",
-    options: ["3", "4", "5", "6"],
-    correctAnswer: "4",
-  },
-];
+import { QUIZ_QUESTIONS } from "@/constants/constants";
+import { useNavigate } from "react-router";
 
 export const QuizPage: React.FC = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -48,10 +20,10 @@ export const QuizPage: React.FC = () => {
   const [quizCompleted, setQuizCompleted] = useState(false);
 
   const currentQuestion = QUIZ_QUESTIONS[currentQuestionIndex];
+  const navigate = useNavigate();
 
   const handleAnswerSubmit = () => {
     if (selectedAnswer) {
-      // Check if the answer is correct
       const isCorrect = selectedAnswer === currentQuestion.correctAnswer;
 
       if (isCorrect) {
@@ -63,7 +35,6 @@ export const QuizPage: React.FC = () => {
   };
 
   const handleNextQuestion = () => {
-    // Move to next question or complete quiz
     if (currentQuestionIndex < QUIZ_QUESTIONS.length - 1) {
       setCurrentQuestionIndex((prev) => prev + 1);
       setSelectedAnswer(null);
@@ -79,6 +50,8 @@ export const QuizPage: React.FC = () => {
     setIsAnswered(false);
     setScore(0);
     setQuizCompleted(false);
+
+    navigate("/")
   };
 
   if (quizCompleted) {
